@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 
+app.use(cors()); // ✅ THIS FIXES YOUR ISSUE
 app.use(express.json());
 
 app.post("/create-payment", (req, res) => {
-    // Later you will call PhonePe API here
     res.json({
         success: true,
         message: "Payment request created (dummy)"
