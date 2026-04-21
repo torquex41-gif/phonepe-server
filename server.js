@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors()); // ✅ THIS FIXES YOUR ISSUE
+app.use(cors());
 app.use(express.json());
 
 app.post("/create-payment", (req, res) => {
@@ -13,9 +13,8 @@ app.post("/create-payment", (req, res) => {
     });
 });
 
-app.post("/callback", (req, res) => {
-    console.log("Payment confirmation:", req.body);
-    res.sendStatus(200);
+app.get("/", (req, res) => {
+    res.send("Server is running");
 });
 
 app.listen(3000, () => console.log("Server running"));
